@@ -93,6 +93,22 @@
             "resources": [
               "css/bootstrap.css"
             ]
+          },
+          "extend",
+          "aurelia-fetch-client",
+          "aurelia-api",
+          {
+            "name": "reflect-metadata",
+            "path": "../node_modules/reflect-metadata",
+            "main": "Reflect"
+          },
+          {
+            "name": "class-transformer",
+            "path": "../node_modules/class-transformer",
+            "main": "index",
+            "deps": [
+              "reflect-metadata"
+            ]
           }
         ]
       }
