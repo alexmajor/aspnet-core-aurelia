@@ -22,7 +22,7 @@ namespace AWC.ActivityPortal.Migrations
 
             modelBuilder.Entity("AWC.ActivityPortal.Models.Activity", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("CreateBy");
@@ -36,7 +36,7 @@ namespace AWC.ActivityPortal.Migrations
                     b.Property<string>("Name")
                         .HasMaxLength(75);
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Activity");
                 });
@@ -102,14 +102,14 @@ namespace AWC.ActivityPortal.Migrations
 
             modelBuilder.Entity("AWC.ActivityPortal.Models.Comment", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("CreateBy");
 
                     b.Property<DateTime>("CreateDate");
 
-                    b.Property<int?>("EmployeeID");
+                    b.Property<int?>("EmployeeId");
 
                     b.Property<string>("Message")
                         .IsRequired()
@@ -119,16 +119,16 @@ namespace AWC.ActivityPortal.Migrations
 
                     b.Property<DateTime>("ModifyDate");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("EmployeeID");
+                    b.HasIndex("EmployeeId");
 
                     b.ToTable("Comment");
                 });
 
             modelBuilder.Entity("AWC.ActivityPortal.Models.Employee", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("ActivityId");
@@ -143,7 +143,7 @@ namespace AWC.ActivityPortal.Migrations
 
                     b.Property<DateTime>("ModifyDate");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("ActivityId");
 
@@ -264,7 +264,7 @@ namespace AWC.ActivityPortal.Migrations
                 {
                     b.HasOne("AWC.ActivityPortal.Models.Employee")
                         .WithMany("Comments")
-                        .HasForeignKey("EmployeeID")
+                        .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
