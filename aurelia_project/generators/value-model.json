@@ -1,0 +1,4 @@
+{
+  "name": "view-model",
+  "description": "Creates a view model class with view and places them in the chosen path inside the project."
+}
