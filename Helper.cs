@@ -14,7 +14,7 @@ namespace AWC.ActivityPortal.Helpers
         }
     }
 
-    internal class AppSettings
+    public class AppSettings
     {
         public string Secret { get; set; }
     }

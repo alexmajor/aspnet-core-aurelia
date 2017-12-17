@@ -13,20 +13,23 @@ export class EmployeeService {
   }
 
   create(employee: Employee): Promise<Employee> {
-    return this.endpoint.post('employees/register', employee, this.jwt());
+    return this.endpoint.post('employees/register', employee);
   }
 
   update(employee: Employee): Promise<Employee> {
-    return this.endpoint.patch('employees', employee.id, employee, this.jwt());
+    this.endpoint.client.defaults.headers = this.jwt();
+    return this.endpoint.patch('employees', employee.id, employee);
   }
 
   getAll(): Promise<Employee[]> {
+    this.endpoint.client.defaults.headers = this.jwt();
     return this.endpoint.find('employees').then(response => {
       return Promise.resolve(plainToClass<Employee, Object[]>(Employee, response));
     });
   }
 
   getById(id: number): Promise<Employee> {
+    this.endpoint.client.defaults.headers = this.jwt();
     return this.endpoint.find('employees', id).then(response => {
       return Promise.resolve(plainToClass<Employee, Object>(Employee, response));
     });
@@ -36,8 +39,7 @@ export class EmployeeService {
   private jwt() {
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser && currentUser.token) {
-      let headers = { 'Authorization': 'Bearer ' + currentUser.token };
-      return { headers: headers };
+      return { 'Authorization': 'Bearer ' + currentUser.token };
     }
   }
 }

@@ -35,10 +35,11 @@ namespace AWC.ActivityPortal
 
             host.Run();
         }
-
-        public static IWebHost BuildWebHost(string[] args) =>          
-            WebHost.CreateDefaultBuilder(args)
+        private static IWebHost BuildWebHost(string[] args)
+        {
+            return WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .Build();
+        }
     }
 }

@@ -2,6 +2,6 @@ export class EntityBase {
   id: number;
   createDate: Date;
   createBy: string;
-  ModifyDate: Date;
+  modifyDate: Date;
   modifyBy: string;
 }

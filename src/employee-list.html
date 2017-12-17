@@ -1,1 +1,34 @@
-<template>${message}</template>
+<template>
+  <div class="row">
+    <div class="col-md-4 employee-list">
+      <ul class="list-group">
+        <li repeat.for="employee of employees" class="list-group-item ${employee.id === selectedId ? 'active' : ''}">
+          <a click.delegate="select(employee.id)">
+            <h4 class="list-group-item-heading">${employee.identity.firstName} ${employee.identity.lastName}</h4>
+            <p class="list-group-item-text">${employee.identity.email}</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-8 employee-detail">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">${selectedEmployee.identity.firstName} | Employee</h3>
+        </div>
+        <div class="panel-body">
+          <h4>${selectedEmployee.activity.name}</h4>
+          <ul class="list-group">
+            <li repeat.for="comment of selectedEmployee.comments" class="list-group-item">
+              <p class="list-group-item-text">${comment.message} by ${commentDetails(comment)}</p>
+            </li>
+          </ul>
+          <div class="form-group">
+            <label for="newComment" name="lblNewComment">Comment</label>
+            <textarea name="newComment" rows="5" cols="50" value.bind="newComment" class="form-control"></textarea>
+            <button click.delegate="addComment()" class="btn btn-primary">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

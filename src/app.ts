@@ -11,7 +11,7 @@ export class App {
     config.map([
       { route: ['', 'login'], name: 'login', moduleId: 'login', nav: true, title: 'Login' },
       { route: 'register', name: 'register', moduleId: 'register', nav: true, title: 'Register' },
-      { route: 'employees/:id?', moduleId: 'employee-list', name: 'employees', title:'Employees' }
+      { route: 'employees', name: 'employees', moduleId: 'employee-list', title: 'Employee' }
     ]);
     this.router = router;
   }
