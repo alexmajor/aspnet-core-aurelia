@@ -36,9 +36,10 @@ namespace AWC.ActivityPortal
         {
             services.AddDbContext<ActivityContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IAuthenticateService, AuthenticateService>();
+            services.AddCors();
 
             services.AddMvc().AddJsonOptions(opts =>
             {
@@ -84,13 +85,12 @@ namespace AWC.ActivityPortal
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseStaticFiles();
-            app.UseFileServer(new FileServerOptions
-            {
-                EnableDefaultFiles = true,
-                EnableDirectoryBrowsing = false
-            });
+            app.UseCors(x => x
+             .AllowAnyOrigin()
+             .AllowAnyMethod()
+             .AllowAnyHeader()
+             .AllowCredentials());
+             
             app.UseAuthentication();
             app.UseMvc();
         }

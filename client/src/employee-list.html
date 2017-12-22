@@ -24,7 +24,7 @@
           </ul>
           <div class="form-group">
             <label for="newComment" name="lblNewComment">Comment</label>
-            <textarea name="newComment" rows="5" cols="50" value.bind="newComment" class="form-control"></textarea>
+            <textarea name="newComment" rows="5" cols="50" value.bind="newComment.message & validate" class="form-control"></textarea>
             <button click.delegate="addComment()" class="btn btn-primary">Add</button>
           </div>
         </div>

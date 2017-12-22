@@ -15,6 +15,21 @@ export class AuthenticationService {
     return this.endpoint.post('employees/authenticate', { username: username, password: password }).then(user => {
       localStorage.setItem('currentUser', JSON.stringify(user));
     });
+  }
 
+  jwt() {
+    let currentUser = this.currentUser();
+    if (currentUser && currentUser.token) {
+      return { 'Authorization': 'Bearer ' + currentUser.token };
+    }
+  }
+
+  isAuthenticated(): boolean {
+    let currentUser = this.currentUser();
+    return !!currentUser && !!currentUser.token;
+  }
+
+  currentUser() {
+    return JSON.parse(localStorage.getItem('currentUser'));
   }
 }

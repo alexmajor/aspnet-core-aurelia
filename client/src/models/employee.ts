@@ -12,4 +12,10 @@ export class Employee extends EntityBase {
   activity: Activity;
   @Type(() => Comment)
   comments: Comment[];
+
+  constructor() {
+    super();
+    this.identity = new AppUser();
+    this.activity = new Activity();
+  }
 }

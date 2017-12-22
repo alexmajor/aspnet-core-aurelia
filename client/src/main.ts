@@ -5,8 +5,9 @@ export function configure(aurelia: Aurelia) {
   aurelia.use
     .standardConfiguration()
     .feature('resources')
+    .plugin('aurelia-validation')
     .plugin('aurelia-api', config => {
-      config.registerEndpoint('api', 'api/', {
+      config.registerEndpoint('api', 'http://localhost:5000/api/', {
         credentials: 'same-origin',
         headers: {
           'Accept': 'application/json',

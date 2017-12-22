@@ -1,0 +1,62 @@
+<template>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-login">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-6">
+              <a route-href="route: login" class="active" id="login-form-link">Login</a>
+            </div>
+            <div class="col-xs-6">
+              <a route-href="route: register" id="register-form-link">Register</a>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-12">
+              <form id="register-form" role="form" submit.delegate="register()">
+                <div class="form-group">
+                  <label class="control-label" for="username">User Name</label>
+                  <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value.bind="employee.identity.userName & validate">
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="firstname">First Name</label>
+                  <input type="text" name="firstname" id="firstname" tabindex="1" class="form-control" placeholder="First Name" value.bind="employee.identity.firstName & validate">
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="lastname">Last Name</label>
+                  <input type="text" name="lastname" id="lastname" tabindex="1" class="form-control" placeholder="Last Name" value.bind="employee.identity.lastName & validate">
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="email">Email</label>
+                  <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value.bind="employee.identity.email & validate">
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="activity">Activity</label>
+                  <input type="text" name="activity" id="activity" tabindex="1" class="form-control" placeholder="Activity" value.bind="employee.activity.name & validate">
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="password">Password</label>
+                  <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" value.bind="employee.identity.password & validate">
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="confirm-password">Confirm Password</label>
+                  <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password" value.bind="employee.identity.confirmPassword & validate">
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                      <button type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-default">Register</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

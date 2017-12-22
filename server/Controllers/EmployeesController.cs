@@ -97,7 +97,7 @@ namespace AWC.ActivityPortal.Controllers
                 employee.Identity = user;
                 _context.Employees.Update(employee);
                 _context.SaveChanges();
-                return Ok();
+                return CreatedAtRoute(new { id = employee.Id }, employee);
             }
             catch (Exception ex)
             {
